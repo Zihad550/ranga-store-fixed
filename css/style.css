@@ -31,13 +31,24 @@ body {
   /* border: 1px solid black; */
   text-align: center;
   width: 100%;
-  margin: auto;
+  grid-gap:15px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+
+}
+.product{
+  width:auto;
+  height:100%;
+ 
+  background:#eeecec;
+  border-radius: 10px;
 }
 .single-product {
   padding: 10px;
   transition: 0.6s;
+  height:100%;
+  padding:15px;
+ 
 }
 .single-product:hover {
   box-shadow: 4px 4px 7px gray;
