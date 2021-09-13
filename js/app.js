@@ -30,7 +30,7 @@ const showProducts = (products) => {
       </p>
       <h2>Price: $ ${product.price}</h2>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-outline-success">add to cart</button>
-      <button id="details-btn" class="btn btn-outline-danger ">Details</button>
+      <button id="details-btn" class="btn btn-outline-danger" onclick=(getDetail('${product.id}'))>Details</button>
       </div>
       </div>
       `;
@@ -97,3 +97,27 @@ const updateTotal = () => {
 };
 
 loadProducts();
+
+const getDetail = id =>{
+  fetch(`https://fakestoreapi.com/products/${id}`)
+  .then(res => res.json())
+  .then(data => showDetail(data));
+};
+
+const showDetail = detail =>{
+  console.log(detail);
+  console.log(detail.id);
+  const container = document.getElementById('show-product-detail');
+  container.textContent = '';
+  const div = document.createElement('div');
+  div.setAttribute('class','card bg-info mx-auto mb-3');
+  div.style.width = '20rem';
+  div.innerHTML = `
+  <div class="card-body">
+    <h5 class="card-title">${detail.title}</h5>
+    <p class="card-text">${detail.description}</p>
+   
+  </div>
+  `;
+  container.appendChild(div);
+}
